@@ -10,3 +10,4 @@ IPC 是Inter-Process Communication 的简写，译为进程间通讯；说到这
 在Android中开启多进程非常的简单只需要在AndroidManifest中给四大组件声明android:process属性就可以开启多进程了；但是开启多进程后也会带来一些意向不到的问题。
 ###Android的开启多进程的方法
 在Android中开启多进程的方法就只有一种，就是在AndroidManifest中对四大组件声明android:process属性；
+你妹你妹你妹你妹
