@@ -8,7 +8,8 @@
 
 ##Serializable接口
 
-**Serializable**接口是Java提供的一个序列化接口，点进源码看就知道这是一个空标识接口。使用**Serializable**来实现序列化也非常的简单。在一个类中实现Serialiazable接口然后在类中指定一个serialVersionUID就可以了。（不指定serialVersionUID也行但是在后面的使用中可能会出现错误）
+**Serializable**接口是Java提供的一个序列化接口，点进源码看就知道这是一个空标识接口。使用**Serializable**来实现序列化也非常的简单。在一个类中实现Serialiazable接口然后在类中指定一个serialVersionUID就可以了。不指定serialVersionUID也行但是在后面的使用中可能会出现错误。
 
 
 ##Parcelable接口
+这是Android提供的一种新的序列化接口，只要一个类实现了这个接口就可被序列化了。
