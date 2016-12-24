@@ -13,3 +13,69 @@
 
 ##Parcelable接口
 这是Android提供的一种新的序列化接口，只要一个类实现了这个接口就可被序列化了。
+
+
+	package com.maohongyu.parcelabletest;
+
+	import android.os.Parcel;
+	import android.os.Parcelable;
+
+	/**
+	 * Created by maohongyu on 16/12/20.
+ 	 */
+	public class Book implements Parcelable {
+    private int bookID;
+
+    private String name;
+
+    private String Author;
+
+    public Book(int bookID, String name, String author) {
+        this.bookID = bookID;
+        this.name = name;
+        Author = author;
+    }
+
+    public Book() {
+    }
+
+    protected Book(Parcel in) {
+        bookID = in.readInt();
+        name = in.readString();
+        Author = in.readString();
+    }
+
+    public static final Creator<Book> CREATOR = new Creator<Book>() {
+        @Override
+        public Book createFromParcel(Parcel in) {
+            return new Book(in);
+        }
+
+        @Override
+        public Book[] newArray(int size) {
+            return new Book[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(bookID);
+        dest.writeString(name);
+        dest.writeString(Author);
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "bookID=" + bookID +
+                ", name='" + name + '\'' +
+                ", Author='" + Author + '\'' +
+                '}';
+    }
+	}
+
