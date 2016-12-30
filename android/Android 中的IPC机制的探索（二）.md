@@ -79,3 +79,13 @@
     }
 	}
 
+Parcelable的主要方法如下图：
+
+![主要方法](https://raw.githubusercontent.com/MaoLyx/Pager/master/android/image/parcelable%E4%B8%BB%E8%A6%81%E6%96%B9%E6%B3%95.png)
+
+>在实际的Android开发中，如果不涉及到OI和网络传输序列化一般就使用parcelable，而涉及OI的话选用Serializable。
+
+
+##Binder
+
+Binder是Android中跨进程的通信方式，该通讯方式在Linux中没有；从Android framework的角度说，Binder是ServiceManager链接各种Manager和相应的ManagerService的桥梁；从Android应用层来说，Binder是客户端和服务端进行通信的媒介，当binderService的时候，服务端会返回一个包含服务端业务调用的Binder对象，客户端就可以获取服务端提供的服务或数据，这里的服务包括普通服务和基于AIDL的服务。
