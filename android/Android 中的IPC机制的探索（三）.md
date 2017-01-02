@@ -18,7 +18,7 @@
 
 先来看依稀Messenger信使的工作原理图。
 
-![Messeger工作原理图]()
+![Messeger工作原理图](https://github.com/MaoLyx/Pager/blob/master/android/image/Messeger%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86.png?raw=true)
 
 Messenger我们可以通过他在不同的进程中传递一个Message对象，在Message中放入我们需要传递的数据可以了。Messenger的底层也是用AIDL来实现的。而它的具体实现如下：
 
