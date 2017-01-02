@@ -268,7 +268,34 @@ Binder是Android中跨进程的通信方式，该通讯方式在Linux中没有�
 	
 简化一下也就是下面这个图：
 
-![AIDL原理图]()
+![AIDL原理图](https://raw.githubusercontent.com/MaoLyx/Pager/master/android/image/AIDL%E5%8E%9F%E7%90%86%E5%9B%BE.png)
 	
 	
+>补充
 
+其中主要方法的介绍：
+
+* DESCRIPTOR
+
+	Binder的唯一识别，他一般使用当前的包名；
+* asInterface(android.os.IBinder obj)
+
+	将一个IBinder对象强转成IBookManager，如果需要会创建一个代理,如果客户端和服务端处于同一进程，那么久返回Stub对象，如果不是就返回Stub.Proxy(代理)对象;
+* asBinder
+
+	此方法用于返回当前的Binder对象;
+* onTransact
+
+	这个方法运行在服务端中的Binder线程池中，当客户端在远端发起跨进程请求时，系统会封装后交由这个方法来处理。方法原型是：public Boolean onTransact (int code ,android.os.Parcel data,android.os.Parcel reply,int flags);   
+	
+	**code** &nbsp;&nbsp;:用来区别方法；
+	
+	**data** &nbsp;&nbsp;&nbsp;:读出目标方法中的形参；
+	
+	**reply** &nbsp;&nbsp;:当方法执行完后向reply只写入返回值；
+	
+	方法的返回值返回flase客户端的请求会失败；可以运用这特性来做权限判定；
+	
+* Proxy#function
+
+	这个方法在在客户端远程调用，这个方法在调用时，它的实现是这样的：创建该方法需要的输入类型Parcel对象\_data和输出类型Parcel对象_reply及返回对象\*,接着调用transact方法发起远程调用，同时当前线程挂起，当远程调用返回后当前线程继续执行，并且从_reply中取出返回结果，最终返回结果；所以当远程调用的方法是一个很耗时的操作不能做主线程中进行
