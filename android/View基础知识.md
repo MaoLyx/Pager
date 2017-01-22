@@ -9,7 +9,7 @@ view是所有Andriod控件的基类。View是界面的一个抽象类，它代�
 ###View的坐标
 View的坐标是由View的位置主要是他的四个属性来决定的如下图：
 
-![view坐标与父容器的关系]()
+![view坐标与父容器的关系](https://github.com/MaoLyx/Pager/blob/master/android/image/view%E5%9D%90%E6%A0%87%E4%B8%8E%E7%88%B6%E5%AE%B9%E5%99%A8%E7%9A%84%E5%85%B3%E7%B3%BB.png?raw=true)
 
 这样就很容易得出快高个View坐标的关系：`width=right-left` `height=bottom-top`
 
